@@ -1,0 +1,16 @@
+create express template: 
+npm install express-generator -g
+express --view=pug myapp
+cd myapp
+npm install
+run app: DEBUG=myapp:* npm start
+//TODO learn mongodb
+install mongodb: 
+brew update
+brew install mongodb
+mkdir -p /data/db
+sudo chown -R $USER /data/db
+run mongodb: mongod
+console mongo: mongo --port 27017
+install mongoogse: npm install mongoose --save
+db.contacts.save({"firstname": "Simon", "lastname": "Smith", "title": "Mr.", "company": "Amazing company", "jobtitle": "Developer", "primarycontactnumber": "777777777", "othercontactnumbers": [], "primarymailadress": "simon@asd.com", "emailadresses": ["smith2@asd.com"], "groups": ["Dev"]});
