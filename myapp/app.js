@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 //////////////////////////////////////////////////////////////////////////////////////////
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://mongo:27017/test');
 var contactSchema = new mongoose.Schema ({
   primarycontactnumber: {type: String, index:{unique: true}},
   firstname: String,
