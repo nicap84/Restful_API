@@ -24,11 +24,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
-
 //////////////////////////////////////////////////////////////////////////////////////////
 
 mongoose.connect('mongodb://localhost/test');
-
 var contactSchema = new mongoose.Schema ({
   primarycontactnumber: {type: String, index:{unique: true}},
   firstname: String,
