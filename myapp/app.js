@@ -27,7 +27,7 @@ app.use(cors());
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-mongoose.connect = ('mongodb://localhost/contacts');
+mongoose.connect('mongodb://localhost/test');
 
 var contactSchema = new mongoose.Schema ({
   primarycontactnumber: {type: String, index:{unique: true}},
