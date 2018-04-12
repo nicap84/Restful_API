@@ -1,0 +1,23 @@
+version: "2.3"
+volumes:
+  mongodb:
+services:
+  app:
+    container_name: app
+    restart: always
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - type: volume
+        source: mongodb
+        target: /data/db
+        volume:
+          nocopy: true
+    ports:
+      - "27017:27017"
