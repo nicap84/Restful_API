@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 //var contacts = require('./modules/contacts');
 //var contacts = require ('./models/contacs');
 var url = require ('url');
@@ -11,6 +10,7 @@ var url = require ('url');
 var cors = require('cors');
 
 var app = express();
+app.config = require('./config.js');
 var dataService = require ('./modules/contactdataservice');
 var mongoose = require('mongoose');
 
@@ -26,8 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 //////////////////////////////////////////////////////////////////////////////////////////
 
-mongoose.connect('mongodb://mongo:27017/test');
-var contactSchema = new mongoose.Schema ({
+mongoose.connect(app.config.MONGO_CONNSTRING);
+
+const contactSchema = new mongoose.Schema ({
   primarycontactnumber: {type: String, index:{unique: true}},
   firstname: String,
   lastname: String,
@@ -40,7 +41,7 @@ var contactSchema = new mongoose.Schema ({
   groups: [String]
 });
 
-var Contact = mongoose.model('Contact', contactSchema);
+const Contact = mongoose.model('Contact', contactSchema);
 
 app.get('/contacts/:number', function (request, response){
   console.log(request.url + ' : querying for ' + request.params.number);
